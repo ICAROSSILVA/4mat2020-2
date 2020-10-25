@@ -1,12 +1,12 @@
-const controller = require('../controllers/turma')
+const controller = require('../controllers/representante')
 const express = require('express')
 
 const router = express.Router()
 
-router.post('/', controller.novo)       // Create
-router.get('/', controller.listar)      // Retrieve (all)
-router.get('/:id', controller.obterUm)  // Retrieve (one)
-router.put('/', controller.atualizar)   // Update
-router.delete('/', controller.excluir)  // Delete 
+router.post('/', controller.novo)
+router.get('/', controller.listar)
+router.get('/:id', controller.obterUm)
+router.put('/', controller.atualizar)
+router.delete('/', controller.excluir)
 
 module.exports = router

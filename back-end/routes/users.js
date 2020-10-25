@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const controller = require('../controllers/tipo_prod')
+const express = require('express')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('responda com um recurso');
-});
+const router = express.Router()
 
-module.exports = router;
+router.post('/', controller.novo)
+router.get('/', controller.listar)
+router.get('/:id', controller.obterUm)
+router.put('/', controller.atualizar)
+router.delete('/', controller.excluir)
+
+module.exports = router

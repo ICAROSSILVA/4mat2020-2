@@ -4,13 +4,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 const db = require('./config/database')
 const dbUser = process.env.DB_USER
 const dbPass = process.env.DB_PASS
 const dbName = process.env.DB_NAME
-db(`mongodb+srv://${dbUser}:${dbPass}@cluster0.31jwc.gcp.mongodb.net/${dbName}?retryWrites=true&w=majority`)
+db(`mongodb+srv://${dbUser}:${dbPass}@cluster0.iia0a.gcp.mongodb.net/${dbName}?retryWrites=true&w=majority`)
 
 var app = express();
 
@@ -21,26 +20,29 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
-// Criação de uma nova rota
-const teste = require('./routes/teste')
-app.use('/teste', teste)
+const cliente = require('./routes/cliente')
+app.use('/cliente', cliente)
 
-// Rota para curso
-const curso = require('./routes/curso')
-app.use('/curso', curso)
+const representante = require('./routes/representante')
+app.use('/representante', representante)
 
-// Rota para professor
-const professor = require('./routes/professor')
-app.use('/professor', professor)
+const filial = require('./routes/filial')
+app.use('/filial', filial)
 
-// Rota para sala-aula
-const sala_aula = require('./routes/sala_aula')
-app.use('/sala-aula', sala_aula)
+const c_ped_vend = require('./routes/c_ped_vend')
+app.use('/c_ped_vend', c_ped_vend)
 
-// Rota para turma
-const turma = require('./routes/turma')
-app.use('/turma', turma)
+const i_ped_vend = require('./routes/i_ped_vend')
+app.use('/i_ped_vend', i_ped_vend)
+
+const tipo_prod = require('./routes/tipo_prod')
+app.use('/tipo_prod', tipo_prod)
+
+const produto = require('./routes/produto')
+app.use('/produto', produto)
+
+const unidade = require('./routes/unidade')
+app.use('/unidade', unidade)
 
 module.exports = app;
